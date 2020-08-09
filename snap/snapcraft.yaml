@@ -12,6 +12,10 @@ grade: stable
 confinement: strict
 license: MIT
 
+architectures:
+  - build-on: amd64
+    run-on: amd64
+
 package-repositories:
   - type: apt
     url: https://download.mono-project.com/repo/ubuntu/
