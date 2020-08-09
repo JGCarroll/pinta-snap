@@ -115,6 +115,8 @@ apps:
       - desktop-legacy
       - gsettings
       - opengl
+      - unity7
+      - network
     environment:
       MONO_GAC_PREFIX: "$SNAP/usr/lib/mono/gac"
       MONO_PATH: "$SNAP/usr/lib/cli/atk-sharp-2.0:$SNAP/usr/lib/cli/gdk-sharp-2.0:$SNAP/usr/lib/cli/glade-sharp-2.0:$SNAP/usr/lib/cli/glib-sharp-2.0:$SNAP/usr/lib/cli/gtk-dotnet-2.0:$SNAP/usr/lib/cli/gtk-sharp-2.0:$SNAP/usr/lib/cli/Mono.Addins-0.2:$SNAP/usr/lib/cli/Mono.Addins.CecilReflector-0.2:$SNAP/usr/lib/cli/Mono.Addins.Gui-0.2:$SNAP/usr/lib/cli/Mono.Addins.Setup-0.2:$SNAP/usr/lib/cli/pango-sharp-2.0"
