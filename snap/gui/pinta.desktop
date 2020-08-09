@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Pinta
+Comment=Pinta: Drawing made simple!
+Exec=pinta-james-carroll.pinta
+Icon=${SNAP}/meta/gui/pinta.png
+Type=Application
+Categories=Graphics;
