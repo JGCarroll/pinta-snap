@@ -24,28 +24,15 @@ package-repositories:
     suites: [$SNAPCRAFT_APT_RELEASE]
     key-id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
+  - type: apt
+    ppa: pinta-maintainers/pinta-stable
+
 parts:
   pinta:
-    plugin: make
-    source: https://github.com/PintaProject/Pinta.git
-    source-type: git
-    override-build: |
-      ./autogen.sh --prefix=$SNAPCRAFT_PART_INSTALL
-      make
-      make install
-    build-packages:
-      - mono-devel 
-      - gtk-sharp2 
-      - intltool
-      - make 
-      - automake
-      - autoconf
+    plugin: nil
     stage-packages:
       - pinta
       - libglu1-mesa
-      - libglib2.0-cil
-      - gtk-sharp2
-      - mono-runtime
     after: [gtk2]
       
   gtk2:
