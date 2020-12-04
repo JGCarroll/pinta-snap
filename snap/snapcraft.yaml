@@ -19,9 +19,8 @@ architectures:
 package-repositories:
   - type: apt
     url: https://download.mono-project.com/repo/ubuntu/
-    deb-types: [deb]
     components: [main]
-    suites: [$SNAPCRAFT_APT_RELEASE]
+    suites: [focal]
     key-id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
   - type: apt
