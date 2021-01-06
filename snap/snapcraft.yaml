@@ -69,7 +69,7 @@ plugs:
   gtk-2-engines:
     interface: content
     target: $SNAP/lib/gtk-2.0
-    default-provider: gtk2-common-themes
+    default-provider: gtk-common-themes
   gtk-2-themes:
     interface: content
     target: $SNAP/data-dir/themes
