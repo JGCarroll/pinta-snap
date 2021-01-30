@@ -60,12 +60,12 @@ parts:
           cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
     after: [pinta]
+
 slots:
   pinta-dbus-service:
     interface: dbus
     bus: session
     name: com.github.PintaProject.Pinta
-
 
 apps:
   pinta:
