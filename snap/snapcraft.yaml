@@ -1,6 +1,6 @@
-name: pinta-james-carroll
+name: pinta
 base: core20
-version: '1.7'
+version: '1.8'
 summary: 'Pinta: Painting Made Simple'
 description: |
   Pinta is a free, open source program for drawing and image editing.
@@ -19,81 +19,57 @@ architectures:
 
 package-repositories:
   - type: apt
-    url: https://download.mono-project.com/repo/ubuntu/
+    url: https://packages.microsoft.com/ubuntu/20.04/prod
     components: [main]
     suites: [focal]
-    key-id: 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-
-  - type: apt
-    ppa: pinta-maintainers/pinta-stable
+    key-id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
 
 parts:
   pinta:
     plugin: nil
-    stage-packages:
-      - pinta
-      - libglu1-mesa
-    after: [gtk2]
-      
-  gtk2:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers
-    source-type: git
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk2"]
+    source: https://github.com/pintaproject/pinta.git
+    source-branch: gtk3-v2
     build-packages:
-      - libgtk2.0-dev
+      - build-essential
+      - pkg-config
+      - autotools-dev
+      - autoconf
+      - autoconf-archive
+      - automake
+      - autopoint
+      - libtool
+      - gettext
+      - intltool
+      - dotnet-sdk-5.0
     stage-packages:
-      - libxkbcommon0  # XKB_CONFIG_ROOT
-      - ttf-ubuntu-font-family
-      - dmz-cursor-theme
-      - light-themes
-      - adwaita-icon-theme
-      - gnome-themes-standard
-      - shared-mime-info
-      - libgtk2.0-0
-      - libgdk-pixbuf2.0-0
-      - libglib2.0-bin
-      - libgtk2.0-bin
-      - unity-gtk2-module
-      - libappindicator1
-      - locales-all
-      - ibus-gtk
-      - libibus-1.0-5
+      - libglu1-mesa
+      - dotnet-runtime-5.0
+    override-build: |
+      export PATH=/usr/bin:${PATH}
+      ./autogen.sh --prefix=${SNAPCRAFT_PART_INSTALL}/
+      make install
       
-layout:
-  /usr/lib/cli:
-    bind: $SNAP/usr/lib/cli
-    
-plugs:
-  gtk-2-engines:
-    interface: content
-    target: $SNAP/lib/gtk-2.0
-    default-provider: gtk-common-themes
-  gtk-2-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-    
-environment:
-  GTK_PATH: $SNAP/lib/gtk-2.0
-  GTK_DATA_PREFIX: $SNAP
-  XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
-  DISABLE_WAYLAND: 1
-
+  cleanup:
+    plugin: nil
+    build-snaps:
+      - core20
+      - gnome-3-38-2004
+    override-prime: |
+      set -eux
+      for snap in "core20" "gnome-3-38-2004"; do
+          cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done
+    after: [pinta]
+slots:
+  pinta-dbus-service:
+    interface: dbus
+    bus: session
+    name: com.github.PintaProject.Pinta
 
 
 apps:
   pinta:
-    command: bin/desktop-launch mono $SNAP/usr/lib/pinta/Pinta.exe
+    command: usr/bin/dotnet $SNAP/lib/pinta/Pinta.dll
     plugs: 
       - home
       - removable-media
@@ -104,9 +80,5 @@ apps:
       - opengl
       - unity7
       - network
-    environment:
-      MONO_GAC_PREFIX: "$SNAP/usr/lib/mono/gac"
-      MONO_PATH: "$SNAP/usr/lib/cli/atk-sharp-2.0:$SNAP/usr/lib/cli/gdk-sharp-2.0:$SNAP/usr/lib/cli/glib-sharp-2.0:$SNAP/usr/lib/cli/gtk-dotnet-2.0:$SNAP/usr/lib/cli/gtk-sharp-2.0:$SNAP/usr/lib/cli/Mono.Addins-0.2:$SNAP/usr/lib/cli/Mono.Addins.CecilReflector-0.2:$SNAP/usr/lib/cli/Mono.Addins.Gui-0.2:$SNAP/usr/lib/cli/Mono.Addins.Setup-0.2:$SNAP/usr/lib/cli/pango-sharp-2.0"
-      MONO_CONFIG: "$SNAP/etc/mono/config"
-      C_INCLUDE_PATH: "$SNAP/usr/include"
-      ACLOCAL_PATH: "$SNAP/usr/share/aclocal"
+    slots: [pinta-dbus-service]
+    extensions: [gnome-3-38]
