@@ -1,4 +1,4 @@
-name: pinta-james-carroll
+name: pinta
 base: core20
 version: '1.7'
 summary: 'Pinta: Painting Made Simple'
