@@ -13,10 +13,6 @@ confinement: strict
 license: MIT
 compression: lzo
 
-architectures:
-  - build-on: amd64
-    run-on: amd64
-
 package-repositories:
   - type: apt
     url: https://packages.microsoft.com/ubuntu/20.04/prod
