@@ -24,7 +24,6 @@ parts:
   pinta:
     plugin: nil
     source: https://github.com/pintaproject/pinta.git
-    source-branch: gtk3-v2
     build-packages:
       - build-essential
       - pkg-config
