@@ -35,10 +35,10 @@ parts:
       - libtool
       - gettext
       - intltool
-      - dotnet-sdk-5.0
+      - dotnet-sdk-6.0
     stage-packages:
       - libglu1-mesa
-      - dotnet-runtime-5.0
+      - dotnet-runtime-6.0
     override-build: |
       export PATH=/usr/bin:${PATH}
       ./autogen.sh --prefix=${SNAPCRAFT_PART_INSTALL}/
