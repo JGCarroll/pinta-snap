@@ -1,6 +1,6 @@
 name: pinta
 base: core20
-version: '1.7'
+version: '1.7.1'
 summary: 'Pinta: Painting Made Simple'
 description: |
   Pinta is a free, open source program for drawing and image editing.
