@@ -3,11 +3,8 @@ base: core20
 version: '1.8'
 summary: 'Pinta: Painting Made Simple'
 description: |
-  Pinta is a free, open source program for drawing and image editing.
-
-  Its goal is to provide users with a simple yet powerful way to draw and manipulate images on Linux, Mac, Windows, and *BSD.
-
-  It is freely available and open source software designed to emulate the functionality of paint.net
+  Pinta is a freely licensed and cross platform simple drawing application.
+  It is designed in lieu of Paint.NET; being both simple to use and powerful for a wide variety of image manipulation purposes.
 grade: stable
 confinement: strict
 license: MIT
