@@ -1,6 +1,5 @@
 name: pinta
 base: core20
-version: '1.8'
 summary: 'Pinta: Painting Made Simple'
 description: |
   Pinta is a freely licensed and cross platform simple drawing application.
@@ -9,6 +8,7 @@ grade: stable
 confinement: strict
 license: MIT
 compression: lzo
+adopt-info: pinta
 
 package-repositories:
   - type: apt
@@ -36,6 +36,9 @@ parts:
     stage-packages:
       - libglu1-mesa
       - dotnet-runtime-6.0
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git rev-parse --short HEAD)"
     override-build: |
       export PATH=/usr/bin:${PATH}
       ./autogen.sh --prefix=${SNAPCRAFT_PART_INSTALL}/
