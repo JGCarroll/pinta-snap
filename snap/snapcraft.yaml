@@ -94,6 +94,7 @@ environment:
 apps:
   pinta:
     command: bin/desktop-launch mono $SNAP/usr/lib/pinta/Pinta.exe
+    common-id: com.github.PintaProject.Pinta
     plugs: 
       - home
       - removable-media
