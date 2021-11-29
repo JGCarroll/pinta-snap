@@ -65,6 +65,7 @@ slots:
 apps:
   pinta:
     command: usr/bin/dotnet $SNAP/lib/pinta/Pinta.dll
+    common-id: com.github.PintaProject.Pinta
     plugs: 
       - home
       - removable-media
