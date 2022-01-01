@@ -9,7 +9,6 @@ grade: stable
 confinement: strict
 license: MIT
 compression: lzo
-adopt-info: pinta
 
 package-repositories:
   - type: apt
@@ -22,7 +21,7 @@ parts:
   pinta:
     plugin: nil
     source: https://github.com/pintaproject/pinta.git
-    source-tag: 2.0
+    source-commit: 8f168ea3fd87264ecbbc3ad6eb75d6a4df136960 # 2.0 tag
     build-packages:
       - build-essential
       - pkg-config
