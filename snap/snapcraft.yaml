@@ -1,6 +1,6 @@
 name: pinta
 base: core20
-version: '2.0'
+version: '2.0.1'
 summary: 'Pinta: Painting Made Simple'
 description: |
   Pinta is a freely licensed and cross platform simple drawing application.
@@ -21,7 +21,7 @@ parts:
   pinta:
     plugin: nil
     source: https://github.com/pintaproject/pinta.git
-    source-commit: 8f168ea3fd87264ecbbc3ad6eb75d6a4df136960 # 2.0 tag
+    source-commit: a0e900930e6d7c5f8c51277dae9f933eb76c9570 # 2.0.1 tag
     build-packages:
       - build-essential
       - pkg-config
