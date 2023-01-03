@@ -1,7 +1,7 @@
 name: pinta
 base: core22
 version: '2.1'
-summary: 'Pinta: Painting Made Simple'
+summary: 'Painting Made Simple'
 description: |
   Pinta is a freely licensed and cross platform simple drawing application.
   It is designed in lieu of Paint.NET; being both simple to use and powerful for a wide variety of image manipulation purposes.
