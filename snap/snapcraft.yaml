@@ -41,7 +41,7 @@ parts:
       export PATH=/usr/bin:${PATH}
       ./autogen.sh --prefix=${SNAPCRAFT_PART_INSTALL}/
       make install
-      
+
   cleanup:
     plugin: nil
     build-snaps:
@@ -64,7 +64,7 @@ apps:
   pinta:
     command: usr/bin/dotnet $SNAP/lib/pinta/Pinta.dll
     common-id: com.github.PintaProject.Pinta
-    plugs: 
+    plugs:
       - home
       - removable-media
       - x11
