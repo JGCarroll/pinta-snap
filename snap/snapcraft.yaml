@@ -1,5 +1,5 @@
 name: pinta
-base: core20
+base: core22
 version: '2.1'
 summary: 'Pinta: Painting Made Simple'
 description: |
@@ -12,9 +12,9 @@ compression: lzo
 
 package-repositories:
   - type: apt
-    url: https://packages.microsoft.com/ubuntu/20.04/prod
+    url: https://packages.microsoft.com/ubuntu/22.04/prod
     components: [main]
-    suites: [focal]
+    suites: [jammy]
     key-id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
 
 parts:
@@ -39,20 +39,22 @@ parts:
       - dotnet-runtime-7.0
     override-build: |
       export PATH=/usr/bin:${PATH}
-      ./autogen.sh --prefix=${SNAPCRAFT_PART_INSTALL}/
+      ./autogen.sh --prefix=${CRAFT_PART_INSTALL}/
       make install
 
   cleanup:
     plugin: nil
     build-snaps:
-      - core20
-      - gnome-3-38-2004
+      - core22
+      - gnome-42-2204
     override-prime: |
       set -eux
-      for snap in "core20" "gnome-3-38-2004"; do
+      for snap in "core22" "gnome-42-2204"; do
           cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
     after: [pinta]
+
+
 
 slots:
   pinta-dbus-service:
@@ -75,4 +77,4 @@ apps:
       - unity7
       - network
     slots: [pinta-dbus-service]
-    extensions: [gnome-3-38]
+    extensions: [gnome]
