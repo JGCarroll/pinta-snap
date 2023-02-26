@@ -35,7 +35,6 @@ parts:
       - intltool
       - dotnet-sdk-7.0
     stage-packages:
-      - libglu1-mesa
       - dotnet-runtime-7.0
     override-build: |
       export PATH=/usr/bin:${PATH}
