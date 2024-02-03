@@ -2,10 +2,7 @@ name: Basic build test
 
 on:
   push:
-    branches:
-      - master
   pull-request:
-
 
 jobs:
   build:
