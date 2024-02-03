@@ -61,12 +61,6 @@ apps:
     plugs:
       - home
       - removable-media
-      - x11
-      - desktop
-      - desktop-legacy
-      - gsettings
-      - opengl
-      - unity7
       - network
     slots: [pinta-dbus-service]
     extensions: [gnome]
