@@ -1,6 +1,6 @@
 name: pinta
 base: core22
-version: '2.1.1'
+version: '2.1.2'
 summary: 'Painting Made Simple'
 description: |
   Pinta is a freely licensed and cross platform simple drawing application.
@@ -14,7 +14,7 @@ parts:
   pinta:
     plugin: nil
     source: https://github.com/pintaproject/pinta.git
-    source-commit: bb52f2e05d48a90910de58f02204551d4af80e1e # 2.1.1 tag
+    source-commit: 79f2799cba3a1a78c20ecbabfb6575204036f6c8 # 2.1.2 tag
     build-packages:
       - build-essential
       - pkg-config
@@ -26,9 +26,9 @@ parts:
       - libtool
       - gettext
       - intltool
-      - dotnet-sdk-7.0
+      - dotnet-sdk-8.0
     stage-packages:
-      - dotnet-runtime-7.0
+      - dotnet-runtime-8.0
     override-build: |
       export PATH=/usr/bin:${PATH}
       ./autogen.sh --prefix=${CRAFT_PART_INSTALL}/
