@@ -1,5 +1,5 @@
 name: pinta
-base: core22
+base: core24
 version: '2.1.2'
 summary: 'Painting Made Simple'
 description: |
@@ -37,11 +37,11 @@ parts:
   cleanup:
     plugin: nil
     build-snaps:
-      - core22
-      - gnome-42-2204
+      - core24
+      - gnome-46-2404
     override-prime: |
       set -eux
-      for snap in "core22" "gnome-42-2204"; do
+      for snap in "core24" "gnome-46-2404"; do
           cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
     after: [pinta]
