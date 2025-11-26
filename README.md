@@ -25,7 +25,7 @@ Often, followed by another reboot (or just the one - if you did this all in one 
 sudo apt install git
 git clone https://github.com/JGCarroll/pinta-snap.git
 cd pinta-snap
-snapcraft --debug --verbose
+snapcraft pack --debug --verbose
 ```
 Snapcraft will automatically set up the entire .NET and Gnome environment and produce the snap with consistent tooling through the LXD backend. You can install your snap with `sudo snap install pinta_myVersion_amd64.snap --dangerous`, using `--dangerous` to skip the signature certificate checks. This is fully equivilent to running Pinta from the official snap store except for the requirement to manually connect the `removable-media` interface on custom versions (`sudo snap connect pinta:removable-media`).
 
