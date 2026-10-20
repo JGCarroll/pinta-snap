@@ -11,12 +11,12 @@ jobs:
       fail-fast: false
       matrix:
         runner: [ubuntu-latest, ubuntu-26.04-arm]
-    runs-on: ${{ matrix.runner }}
+    runs-on: ${{matrix.runner}}
     steps:
     - uses: actions/checkout@v7
     - uses: canonical/action-build@v1
       id: build
     - uses: actions/upload-artifact@v7
       with:
-        path: ${{ steps.build.outputs.snap}}
+        path: ${{steps.build.outputs.snap}}
         archive: false
