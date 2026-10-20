@@ -18,5 +18,5 @@ jobs:
       id: build
     - uses: actions/upload-artifact@v7
       with:
-        path: ${{ steps.build.outputs.snap}}
+        path: ${{ steps.build.outputs.snap }}
         archive: false
